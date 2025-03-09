@@ -1,1 +1,49 @@
-# Visdrugs_v.0.1.0
+# VisDrugs: An Interactive Shiny R Package for Drug Safety Analysis
+
+## Overview  
+This webpage integrates **adverse reaction data** in ASCII format from the **FAERS** database, covering **2014Q3 to 2024Q3**. The dataset specifically filters reports submitted by four types of healthcare professionals:  
+- **HP** (Health Professional)  
+- **MD** (Physician)  
+- **OT** (Other Health Professional)  
+- **PH** (Pharmacist)  
+
+### **Dataset Highlights**
+- **Over 2,700,000** independent reports from FAERS, each involving only **one drug**, avoiding adverse reaction interference from multiple drugs.  
+- Covers **~4,000 drug active ingredients** and provides **6,000,000+ adverse reaction entries**.  
+- Enables precise drug safety analysis with an interactive interface.  
+
+Users can **enter the active ingredient of a drug** to analyze and compare potential adverse reactions.  
+
+---
+
+## **Understanding Adverse Reactions in FAERS**
+The adverse reactions referenced in this tool correspond to the **Preferred Term (PT)** in the FAERS database, based on the **Medical Dictionary for Regulatory Activities (MedDRA)**.  
+When reporting data to FAERS, professionals may include:  
+✔ **Adverse reactions caused by diseases**  
+✔ **Reactions related to the drug's indications**  
+✔ **Reactions directly caused by the drug itself**  
+
+For **accurate analysis of drug-induced adverse reactions**, special care should be taken to **exclude indications-related adverse reactions**.  
+
+### **How to Ensure Accuracy**
+1. If the **top 15 adverse reactions** in a drug’s pie chart are all **related to indications**, download the raw data.  
+2. Identify the most **frequent adverse reactions unrelated to indications**.  
+3. Use the **"Reaction Comparison Between Drugs"** mode for in-depth analysis.  
+
+---
+
+## **Download Required Data File**
+To use this Shiny app, download the required dataset and place it in the **`WWW\data\`** directory:
+
+📂 **File Name**: `6keydata_prof_v2.RData`  
+📥 **Download Link**: [Baidu Cloud](https://pan.baidu.com/s/19H7oEVbFy5Wb7_Z-j1v_SQ)  
+🔑 **Access Code**: `fb73`  
+
+---
+
+## **Getting Started**
+1. **Install required dependencies**:
+   ```r
+   install.packages("shiny")
+   install.packages("data.table")
+   install.packages("ggplot2")
