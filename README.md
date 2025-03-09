@@ -1,7 +1,9 @@
 # VisDrugs: An Interactive Shiny R Package for Drug Safety Analysis
+**Use online**: [VisDrugsD Web App](http://sctdb.cn/shiny-server/Visdrugs_v.0.1.0/)  
+**Or run locally** as follows:  
 
 ## Overview  
-This webpage integrates **adverse reaction data** in ASCII format from the **FAERS** database, covering **2014Q3 to 2024Q3**. The dataset specifically filters reports submitted by four types of healthcare professionals:  
+This shinyR app integrates **adverse reaction data** in ASCII format from the **FAERS** database, covering **2014Q3 to 2024Q3**. The dataset specifically filters reports submitted by four types of healthcare professionals:  
 - **HP** (Health Professional)  
 - **MD** (Physician)  
 - **OT** (Other Health Professional)  
@@ -32,7 +34,9 @@ For **accurate analysis of drug-induced adverse reactions**, special care should
 
 ---
 
-## **Download Required Data File**
+## **Getting Started**
+
+1. **Download Required Data File**
 To use this Shiny app, download the required dataset and place it in the **`WWW\data\`** directory:
 
 📂 **File Name**: `6keydata_prof_v2.RData`  
@@ -41,9 +45,18 @@ To use this Shiny app, download the required dataset and place it in the **`WWW\
 
 ---
 
-## **Getting Started**
-1. **Install required dependencies**:
+2. **Install required dependencies**:
    ```r
-   install.packages("shiny")
-   install.packages("data.table")
-   install.packages("ggplot2")
+   library(shiny)
+   library(bslib)
+   library(stringr)
+   library(stringi)
+   library(shinycssloaders)
+   library(shinyjs)
+   library(plotly)
+   library(echarts4r)
+   library(DT)
+
+3.**Run app.R**
+
+---
