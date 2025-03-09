@@ -1,5 +1,5 @@
 # VisDrugs: An Interactive Shiny R Package for Drug Safety Analysis
-**Use online**: [VisDrugsD Web App](http://sctdb.cn/shiny-server/Visdrugs_v.0.1.0/)  
+**Use online**: [VisDrugs Web App](http://sctdb.cn/shiny-server/Visdrugs_v.0.1.0/)  
 **Or run locally** as follows:  
 
 ## Overview  
