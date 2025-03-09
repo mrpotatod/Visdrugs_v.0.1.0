@@ -57,6 +57,6 @@ To use this Shiny app, download the required dataset and place it in the **`WWW\
    library(echarts4r)
    library(DT)
 
-3.**Run app.R**
+3. **Run app.R**
 
 ---
