@@ -68,5 +68,6 @@ Research Center for Eco-Environmental Sciences, Chinese Academy of Sciences
 ---
 
 If you use VisDrugs in published research, please cite the most appropriate paper(s) from this list:
+
 Renjun Yang, Nuoya Yin, Ying Zhao, Dandan Li, Xuanling Zhang, Xingang Li, Yang Zhang, Francesco Faiola. Adverse Events During Pregnancy Associated With Entecavir and Adefovir: New Insights From a Real-World Analysis of Cases Reported to FDA Adverse Event Reporting System. Front Pharmacol. 2022 Jan. 3:12:772768. DOI: 10.3389/fphar.2021.772768.
 
