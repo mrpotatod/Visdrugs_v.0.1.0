@@ -10,7 +10,7 @@ library(ggrepel)
 library(viridis)
 library(EBImage)
 
-load("WWW/data/6keydata_prof_v2.RData")
+load("WWW/data/F_COREDATA_1PS_PROF_STU.RData")
 ########################################################################
 #                    data processing functions                         #
 ########################################################################
@@ -18,7 +18,7 @@ load("WWW/data/6keydata_prof_v2.RData")
 #extract all cases according to drugs func.1------------------------
 finddrugreacs<-function(drugs=NULL){
   targetdrugdata<-indexdata_prof[indexdata_prof$prod_ai%in%drugs,]
-  
+
   #target drug's all effect and non target drug's all effect
   tdalle<-allreac_prof[allreac_prof$primaryid%in%targetdrugdata$primaryid,]
   ntdalle<-allreac_prof[!allreac_prof$primaryid%in%targetdrugdata$primaryid,]
@@ -27,9 +27,9 @@ finddrugreacs<-function(drugs=NULL){
 
 #extract all cases according to drugs func.2------------------------
 extractcases<-function(d1=drugs1,d2="OTHER DRUGS"){
-  
+
   if(is.null(d1)){stop("Please select drug for treatment group")}
-  
+
   tdalle_ntdalle<-finddrugreacs(drugs=d1)
   d1alle<-tdalle_ntdalle$tdalle
   if(d2[1]=="OTHER DRUGS"){d2alle<-tdalle_ntdalle$ntdalle}else{
@@ -77,7 +77,7 @@ groupbynon<-function(drugreaction=NULL){
 }
 #calculate odd ratio--------------------------
 calodd<-function(targetreac=NULL,drug1reactions=NULL,drug2reactions=NULL){
-  
+
   res<-lapply(targetreac,function(x){
     td1te<-drug1reactions[drug1reactions$pt%in%x,1]
     td1nte<-drug1reactions[!drug1reactions$pt%in%x,1]
@@ -168,7 +168,7 @@ cgres2plot<-function(dfall=NULL,druggroupname1=NULL,druggroupname2=NULL,USRID=NU
   cmupper<-ceiling(max(upper[!is.na(lower)]))
   p<-forest(dfall[,c(1:3,8,9)],
          est = est,
-         lower = lower, 
+         lower = lower,
          upper = upper,
          sizes = 0.8,
          ci_column = 4,
@@ -182,7 +182,7 @@ cgres2plot<-function(dfall=NULL,druggroupname1=NULL,druggroupname2=NULL,USRID=NU
   ggsave(filename=paste("WWW/temp/",USRID,"_forest.png",sep=""), plot = p, width = 2500, height = (nrow(dfall)*80+400), units = "px", dpi = 180)
 
   resize_image(input_path=paste("WWW/temp/",USRID,"_forest.png",sep=""),output_path=paste("WWW/temp/",USRID,"_forest2.png",sep=""), fixed_width =1500)
-  
+
   # Print plot
   return("plot forest")
 }
@@ -194,12 +194,12 @@ tdte2pie<-function(tdte=NULL,druggroupname=NULL,USRID=NULL){
   df <- tdte$pt%>%table()%>%as.data.frame()
   colnames(df) <- c("Reaction", "Frequency")
   df<-df[order(df$Frequency,decreasing = T),]
-  tmp<-ifelse(nrow(df)>15,df2<-df[1:15,],df2<-df) 
-  
+  tmp<-ifelse(nrow(df)>15,df2<-df[1:15,],df2<-df)
+
   df2$Reaction <- factor(df2$Reaction, levels = df2$Reaction)
   # 计算百分比
   df2$Percentage <- df2$Frequency / sum(df2$Frequency) * 100
-  
+
   # 添加标签
   df2$Label <- paste0(round(df2$Percentage, 1), "%")
   df2$Frequency<-as.character(df2$Frequency)
@@ -212,12 +212,12 @@ tdte2pie<-function(tdte=NULL,druggroupname=NULL,USRID=NULL){
           plot.title = element_text(hjust = 0.5)) +
     labs(title = paste("Reaction Distribution of",druggroupname)) +
     scale_fill_viridis_d(begin = 0.15,end = 0.85,option = "H")  # 设置颜色主题
-  
+
     ggsave(filename=paste("WWW/temp/",USRID,"_pie.png",sep=""), plot = p, width =  2600, height = 1600, units = "px", dpi = 300)
-  
+
   resize_image(input_path=paste("WWW/temp/",USRID,"_pie.png",sep=""),output_path=paste("WWW/temp/",USRID,"_pie2.png",sep=""), fixed_width =1000)
-  
-  return(list(df=df,df2=df2,p=p))  
+
+  return(list(df=df,df2=df2,p=p))
 
   }
 
